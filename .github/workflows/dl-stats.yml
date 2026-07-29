@@ -47,6 +47,9 @@ jobs:
           set -euo pipefail
           # 누적만 쌓인 CSV → 전일 대비·일별 증가를 계산한 읽을 수 있는 표
           python3 stats/report.py stats/downloads.csv > stats/README.md
+          # 공개 README 최하단 '사용 현황' 도 갱신. 삽입까지 report.py 가 한다 —
+          # 워크플로 안에 파이썬을 인라인으로 쓰면 YAML 이 문자열 이스케이프를 먹는다(실측).
+          python3 stats/report.py stats/downloads.csv --write-readme
           # 실행 화면에서도 바로 보이게(Actions 요약)
           cat stats/README.md >> "$GITHUB_STEP_SUMMARY"
 
@@ -57,7 +60,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           # 반드시 add 를 먼저 한다 — 첫 실행에서 파일이 **새로 생기면** 추적되지 않아
           # `git diff` 가 변화를 못 본다(실측: 62행을 만들고도 '변경 없음' 으로 빠졌다).
-          git add stats/downloads.csv stats/README.md stats/report.py
+          git add stats/downloads.csv stats/README.md stats/report.py README.md
           if git diff --cached --quiet; then
             echo "변경 없음 — 커밋하지 않음"; exit 0
           fi
