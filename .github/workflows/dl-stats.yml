@@ -1,0 +1,56 @@
+name: 다운로드 추이 기록
+
+# GitHub 은 자산별 **누적** 다운로드 수만 준다(과거 시점을 되돌려 볼 수 없다).
+# 그래서 매일 한 번 찍어 저장소에 쌓아 두어야 나중에 증가 곡선을 만들 수 있다.
+# 서버가 필요 없고, 커밋 자체가 저장소 활동이라 스케줄이 비활성화되지 않는다
+# (활동 없는 저장소는 60일 뒤 schedule 이 멈춘다).
+
+on:
+  schedule:
+    - cron: '20 21 * * *'      # 매일 06:20 KST (UTC 21:20 — Actions 는 UTC 로 돈다)
+  workflow_dispatch: {}         # 수동 실행도 허용
+
+permissions:
+  contents: write               # 스냅숏을 저장소에 커밋하려면 필요
+
+concurrency:
+  group: dl-stats
+  cancel-in-progress: false     # 기록 작업은 취소하지 않는다(빈 날 생김 방지)
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 스냅숏 수집
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p stats
+          f=stats/downloads.csv
+          [ -s "$f" ] || echo 'date,tag,asset,downloads' > "$f"
+          today=$(date -u +%F)
+          # 같은 날 두 번 기록하지 않는다(수동 실행·재시도 대비)
+          if grep -q "^\"$today\"," "$f"; then
+            echo "오늘($today) 기록이 이미 있음 — 건너뜀"; exit 0
+          fi
+          # 릴리스 전부 × 자산 전부 → date,tag,asset,downloads
+          gh api "repos/${GITHUB_REPOSITORY}/releases" --paginate \
+            --jq '.[] | .tag_name as $t | .assets[] | [$t, .name, .download_count] | @csv' \
+            | sed "s/^/\"$today\",/" >> "$f"
+          echo "총 $(( $(wc -l < "$f") - 1 ))행"
+
+      - name: 커밋
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- stats/downloads.csv; then
+            echo "변경 없음 — 커밋하지 않음"; exit 0
+          fi
+          git config user.name  'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add stats/downloads.csv
+          git commit -m "chore(stats): 다운로드 스냅숏 $(date -u +%F)"
+          # 다른 커밋과 경합하면 한 번 재시도
+          git push || (git pull --rebase --autostash && git push)
