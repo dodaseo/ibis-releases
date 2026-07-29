@@ -5,6 +5,12 @@
 KCI·ScienceON 검색, 도서관 교외접속 경유 원문 확보, 인앱 PDF 뷰어·주석, AI 요약, 태그 네트워크,
 그리고 아래아한글(HWP)·MS Word 본문 인용(CWYW) — **한국 연구자의 실제 작업 흐름에 맞춰 설계**했습니다.
 
+<div align="center">
+
+[![최신 버전 내려받기](https://img.shields.io/badge/%E2%AC%87%20%EC%B5%9C%EC%8B%A0%20%EB%B2%84%EC%A0%84%20%EB%82%B4%EB%A0%A4%EB%B0%9B%EA%B8%B0-Windows%2010%2F11-2ea44f?style=for-the-badge)](https://github.com/rubato103/ibis-releases/releases/latest) &nbsp; [![최신 릴리스](https://img.shields.io/github/v/release/rubato103/ibis-releases?style=for-the-badge&color=455a64&label=release)](https://github.com/rubato103/ibis-releases/releases/latest)
+
+</div>
+
 > 이 저장소는 **배포 전용**입니다. 소스 코드는 비공개로 관리되며,
 > 버그 제보·기능 제안은 [Issues](../../issues)로 남겨주세요.
 
