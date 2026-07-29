@@ -9,7 +9,11 @@ KCI·ScienceON 검색, 도서관 교외접속 경유 원문 확보, 인앱 PDF �
 
 [![최신 버전 내려받기](https://img.shields.io/badge/%E2%AC%87%20%EC%B5%9C%EC%8B%A0%20%EB%B2%84%EC%A0%84%20%EB%82%B4%EB%A0%A4%EB%B0%9B%EA%B8%B0-Windows%2010%2F11-2ea44f?style=for-the-badge)](https://github.com/rubato103/ibis-releases/releases/latest) &nbsp; [![최신 릴리스](https://img.shields.io/github/v/release/rubato103/ibis-releases?style=for-the-badge&color=455a64&label=release)](https://github.com/rubato103/ibis-releases/releases/latest)
 
+[![카카오페이로 후원](https://img.shields.io/badge/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8E%98%EC%9D%B4%EB%A1%9C%20%ED%9B%84%EC%9B%90-FEE500?style=for-the-badge&logo=kakaotalk&logoColor=000000)](https://link.kakaopay.com/__/zHIhl5m)
+
 </div>
+
+<sub>Ibis 는 한 사람이 만드는 **무료** 연구 도구입니다 — 후원은 순전히 선택이며 모든 기능은 후원과 무관하게 열려 있습니다.</sub>
 
 > 이 저장소는 **배포 전용**입니다. 소스 코드는 비공개로 관리되며,
 > 버그 제보·기능 제안은 [Issues](../../issues)로 남겨주세요.
@@ -114,14 +118,3 @@ KCI·ScienceON 검색, 도서관 교외접속 경유 원문 확보, 인앱 PDF �
 > 버전은 **CalVer**(`연.월.패치`)입니다 — `0.7.2` 다음이 `2026.7.0` 입니다. 날짜 기반이라 언제 빌드인지가 바로 보입니다.
 
 전체 변경 내역은 각 [릴리스 노트](../../releases)를 참고하세요.
-
-## 후원
-
-Ibis 는 한 사람이 만드는 **무료** 연구 도구입니다. 도움이 되셨다면 카카오페이로 응원을 보내실 수 있어요 —
-순전히 선택이며, 모든 기능은 후원과 무관하게 그대로 열려 있습니다.
-
-<div align="center">
-
-[![카카오페이로 후원](https://img.shields.io/badge/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8E%98%EC%9D%B4%EB%A1%9C%20%ED%9B%84%EC%9B%90-FEE500?style=for-the-badge&logo=kakaotalk&logoColor=000000)](https://link.kakaopay.com/__/zHIhl5m)
-
-</div>
