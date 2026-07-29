@@ -45,12 +45,14 @@ jobs:
       - name: 커밋
         run: |
           set -euo pipefail
-          if git diff --quiet -- stats/downloads.csv; then
-            echo "변경 없음 — 커밋하지 않음"; exit 0
-          fi
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          # 반드시 add 를 먼저 한다 — 첫 실행에서 파일이 **새로 생기면** 추적되지 않아
+          # `git diff` 가 변화를 못 본다(실측: 62행을 만들고도 '변경 없음' 으로 빠졌다).
           git add stats/downloads.csv
+          if git diff --cached --quiet; then
+            echo "변경 없음 — 커밋하지 않음"; exit 0
+          fi
           git commit -m "chore(stats): 다운로드 스냅숏 $(date -u +%F)"
           # 다른 커밋과 경합하면 한 번 재시도
           git push || (git pull --rebase --autostash && git push)
