@@ -30,7 +30,7 @@
 
 ### 1.2 설치
 
-[릴리스 페이지](https://github.com/rubato103/ibis-releases/releases/latest)에서 둘 중 하나를 받습니다.
+[릴리스 페이지](https://github.com/rubatoyd/ibis-releases/releases/latest)에서 둘 중 하나를 받습니다.
 
 | 파일 | 용도 |
 |---|---|
