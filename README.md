@@ -8,7 +8,7 @@ KCI·국립중앙도서관 검색, 도서관 교외접속 경유 원문 확보, 
 
 <div align="center">
 
-[![최신 버전 내려받기](https://img.shields.io/badge/%E2%AC%87%20%EC%B5%9C%EC%8B%A0%20%EB%B2%84%EC%A0%84%20%EB%82%B4%EB%A0%A4%EB%B0%9B%EA%B8%B0-Windows%2010%2F11-2ea44f?style=for-the-badge)](https://github.com/rubatoyd/ibis-releases/releases/latest) &nbsp; [![최신 릴리스](https://img.shields.io/github/v/release/rubatoyd/ibis-releases?style=for-the-badge&color=455a64&label=release)](https://github.com/rubatoyd/ibis-releases/releases/latest)
+[![최신 버전 내려받기](https://img.shields.io/badge/%E2%AC%87%20%EC%B5%9C%EC%8B%A0%20%EB%B2%84%EC%A0%84%20%EB%82%B4%EB%A0%A4%EB%B0%9B%EA%B8%B0-Windows%2010%2F11-2ea44f?style=for-the-badge)](https://github.com/dodaseo/ibis-releases/releases/latest) &nbsp; [![최신 릴리스](https://img.shields.io/github/v/release/dodaseo/ibis-releases?style=for-the-badge&color=455a64&label=release)](https://github.com/dodaseo/ibis-releases/releases/latest)
 
 </div>
 
