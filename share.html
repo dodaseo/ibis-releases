@@ -1,0 +1,54 @@
+<!doctype html>
+<!-- Ibis 공유 컬렉션 초대 랜딩 페이지 (docs/CLOUD.md §6.7)
+
+     출시 때 dodaseo/ibis-releases 저장소에 복사하고 GitHub Pages 를 켠다.
+     ⚠ rubato103 조직에는 만들지 말 것(구판 updater 방어용 빈 조직 — TASKS.md).
+     초대 토큰은 # 프래그먼트에 실려 서버·로그에 전송되지 않는다. -->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ibis 공유 컬렉션 초대</title>
+<style>
+  body{margin:0;font:15px/1.7 "Segoe UI","Malgun Gothic",sans-serif;background:#f6f5f1;color:#232323;
+       display:flex;justify-content:center;padding:40px 16px}
+  .card{max-width:560px;background:#fff;border:1px solid #e3e1da;border-radius:14px;padding:28px 30px}
+  h1{font-size:20px;margin:0 0 10px}
+  ol{padding-left:22px;margin:14px 0}
+  li{margin:6px 0}
+  a{color:#0e7a5b}
+  .tok{display:flex;gap:8px;align-items:center;background:#f2f1ec;border:1px solid #e3e1da;
+       border-radius:10px;padding:10px 12px;margin:14px 0 6px}
+  code{flex:1;min-width:0;overflow-wrap:anywhere;font-size:13px}
+  button{border:1px solid #c9c6bc;background:#fff;border-radius:8px;padding:6px 14px;
+         font:inherit;font-size:13px;cursor:pointer}
+  .mut{color:#7a776e;font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Ibis 공유 컬렉션 초대</h1>
+  <p>연구 서지와 하이라이트를 함께 정리하는 <b>Ibis</b> 의 공유 컬렉션에 초대받으셨습니다.
+     받는 법은 세 걸음입니다.</p>
+  <ol>
+    <li>Ibis 가 없다면 먼저 설치 —
+        <a href="https://github.com/dodaseo/ibis-releases/releases/latest">최신 버전 내려받기</a></li>
+    <li>Ibis 실행 → 구글 로그인 (⚙설정 → 클라우드 — 가입 절차 없음)</li>
+    <li><b>[클라우드 공유 받기]</b> 에 이 페이지 주소(또는 아래 토큰)를 붙여넣기</li>
+  </ol>
+  <div class="tok"><code id="tok">…</code><button onclick="copyLink()">복사</button></div>
+  <p class="mut">초대 토큰은 주소의 # 뒤에 실려 있어 서버로 전송되지 않습니다.
+     링크를 아는 사람은 누구나 참가할 수 있으니 그대로 재전달하지 마세요.</p>
+</div>
+<script>
+  var m = (location.hash || '').match(/[0-9a-fA-F-]{36}/);
+  document.getElementById('tok').textContent =
+    m ? m[0] : '(토큰이 없습니다 — 받은 링크를 그대로 열어 주세요)';
+  function copyLink() {
+    navigator.clipboard.writeText(location.href).then(
+      function () { alert('복사되었습니다 — Ibis 의 [클라우드 공유 받기]에 붙여넣으세요.'); },
+      function () { alert('복사하지 못했습니다 — 주소창의 주소를 직접 복사해 주세요.'); });
+  }
+</script>
+</body>
+</html>
