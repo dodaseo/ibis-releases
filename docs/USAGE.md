@@ -876,7 +876,7 @@ EndNote 의 'Update Citations and Bibliography' 에 해당합니다.
 - **환경변수가 `secrets.json` 보다 우선**합니다(`SCIENCEON_*`·`UNPAYWALL_EMAIL`·`LIBRARY_PROXY_PREFIX/AUTO`·`LIBRARY_LOGIN_URL`·`IBIS_LIBRARY` 등).
 - 라이브러리 경로 우선순위: env `IBIS_LIBRARY` > secrets `library_path` > 기본.
 - 옛 환경변수 이름 `HWPENDNOTE_LIBRARY`·`HWPENDNOTE_BACKEND` **도 그대로 인정**됩니다(새 이름 `IBIS_LIBRARY`·`IBIS_BACKEND` 가 우선).
-- `🔧도구 › 라이브러리 › '라이브러리 폴더 열기'` 로 탐색기에서 확인.
+- `⚙설정 › 라이브러리 › '탐색기에서 보기'` 로 확인.
 
 ### 9.6 라이브러리 위치·클라우드 폴더 동기화
 
