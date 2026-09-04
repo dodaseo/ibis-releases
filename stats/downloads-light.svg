@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="200" viewBox="0 0 760 200" role="img" aria-label="누적 다운로드 추이 — 설치 프로그램 16건, zip 44건">
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="200" viewBox="0 0 760 200" role="img" aria-label="누적 다운로드 추이 — 설치 프로그램 17건, zip 48건">
 <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11">
 <line x1="30" y1="174.0" x2="664" y2="174.0" stroke="#e6e0d0" stroke-width="1"/>
 <text x="22" y="177.5" fill="#847f6d" font-size="10" text-anchor="end">0</text>
@@ -12,14 +12,14 @@
 <text x="22" y="49.5" fill="#847f6d" font-size="10" text-anchor="end">40</text>
 <line x1="30" y1="14.0" x2="664" y2="14.0" stroke="#e6e0d0" stroke-width="1"/>
 <text x="22" y="17.5" fill="#847f6d" font-size="10" text-anchor="end">50</text>
-<polyline points="30.0,113.2 47.6,110.0 65.2,110.0 82.8,110.0 100.4,110.0 118.1,110.0 135.7,110.0 153.3,106.8 188.5,103.6 206.1,100.4 223.7,97.2 241.3,94.0 258.9,90.8 276.6,90.8 294.2,87.6 311.8,78.0 329.4,78.0 347.0,78.0 364.6,78.0 382.2,78.0 399.8,65.2 417.4,58.8 435.1,55.6 452.7,55.6 470.3,55.6 487.9,55.6 505.5,55.6 540.7,55.6 558.3,55.6 575.9,55.6 593.6,49.2 628.8,46.0 646.4,36.4 664.0,33.2" fill="none" stroke="#b0a68c" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
-<polyline points="30.0,148.4 47.6,145.2 65.2,145.2 82.8,145.2 100.4,145.2 118.1,145.2 135.7,145.2 153.3,145.2 188.5,142.0 206.1,129.2 223.7,129.2 241.3,129.2 258.9,129.2 276.6,129.2 294.2,129.2 311.8,129.2 329.4,129.2 347.0,129.2 364.6,129.2 382.2,126.0 399.8,126.0 417.4,126.0 435.1,126.0 452.7,126.0 470.3,126.0 487.9,126.0 505.5,126.0 540.7,126.0 558.3,126.0 575.9,126.0 593.6,126.0 628.8,126.0 646.4,122.8 664.0,122.8" fill="none" stroke="#0e7a5b" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-<circle cx="664.0" cy="33.2" r="2.6" fill="#b0a68c"/>
-<text x="672.0" y="37.2" fill="#b0a68c" font-size="12" font-weight="600">zip 44</text>
-<circle cx="664.0" cy="122.8" r="2.6" fill="#0e7a5b"/>
-<text x="672.0" y="126.8" fill="#0e7a5b" font-size="12" font-weight="600">설치 16</text>
+<polyline points="30.0,113.2 47.1,110.0 64.3,110.0 81.4,110.0 98.5,110.0 115.7,110.0 132.8,110.0 149.9,106.8 184.2,103.6 201.4,100.4 218.5,97.2 235.6,94.0 252.8,90.8 269.9,90.8 287.0,87.6 304.2,78.0 321.3,78.0 338.4,78.0 355.6,78.0 372.7,78.0 389.8,65.2 407.0,58.8 424.1,55.6 441.2,55.6 458.4,55.6 475.5,55.6 492.6,55.6 526.9,55.6 544.1,55.6 561.2,55.6 578.3,49.2 612.6,46.0 629.7,36.4 646.9,33.2 664.0,20.4" fill="none" stroke="#b0a68c" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="30.0,148.4 47.1,145.2 64.3,145.2 81.4,145.2 98.5,145.2 115.7,145.2 132.8,145.2 149.9,145.2 184.2,142.0 201.4,129.2 218.5,129.2 235.6,129.2 252.8,129.2 269.9,129.2 287.0,129.2 304.2,129.2 321.3,129.2 338.4,129.2 355.6,129.2 372.7,126.0 389.8,126.0 407.0,126.0 424.1,126.0 441.2,126.0 458.4,126.0 475.5,126.0 492.6,126.0 526.9,126.0 544.1,126.0 561.2,126.0 578.3,126.0 612.6,126.0 629.7,122.8 646.9,122.8 664.0,119.6" fill="none" stroke="#0e7a5b" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="664.0" cy="20.4" r="2.6" fill="#b0a68c"/>
+<text x="672.0" y="24.4" fill="#b0a68c" font-size="12" font-weight="600">zip 48</text>
+<circle cx="664.0" cy="119.6" r="2.6" fill="#0e7a5b"/>
+<text x="672.0" y="123.6" fill="#0e7a5b" font-size="12" font-weight="600">설치 17</text>
 <text x="30.0" y="192" fill="#847f6d" font-size="10" text-anchor="start">07.29</text>
-<text x="347.0" y="192" fill="#847f6d" font-size="10" text-anchor="middle">08.16</text>
-<text x="664.0" y="192" fill="#847f6d" font-size="10" text-anchor="end">09.03</text>
+<text x="338.4" y="192" fill="#847f6d" font-size="10" text-anchor="middle">08.16</text>
+<text x="664.0" y="192" fill="#847f6d" font-size="10" text-anchor="end">09.04</text>
 </g>
 </svg>
