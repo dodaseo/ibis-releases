@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="200" viewBox="0 0 760 200" role="img" aria-label="일별 앱 실행 추정 — 최근 7일 평균 하루 21회">
+<g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif" font-size="11">
+<line x1="30" y1="174.0" x2="664" y2="174.0" stroke="#302c23" stroke-width="1"/>
+<text x="22" y="177.5" fill="#9a937f" font-size="10" text-anchor="end">0</text>
+<line x1="30" y1="134.0" x2="664" y2="134.0" stroke="#302c23" stroke-width="1"/>
+<text x="22" y="137.5" fill="#9a937f" font-size="10" text-anchor="end">10</text>
+<line x1="30" y1="94.0" x2="664" y2="94.0" stroke="#302c23" stroke-width="1"/>
+<text x="22" y="97.5" fill="#9a937f" font-size="10" text-anchor="end">20</text>
+<line x1="30" y1="54.0" x2="664" y2="54.0" stroke="#302c23" stroke-width="1"/>
+<text x="22" y="57.5" fill="#9a937f" font-size="10" text-anchor="end">30</text>
+<line x1="30" y1="14.0" x2="664" y2="14.0" stroke="#302c23" stroke-width="1"/>
+<text x="22" y="17.5" fill="#9a937f" font-size="10" text-anchor="end">40</text>
+<rect x="30.0" y="150.0" width="10.8" height="24.0" fill="#4fb391"/>
+<rect x="40.1" y="170.0" width="10.8" height="4.0" fill="#4fb391"/>
+<rect x="55.5" y="126.0" width="10.8" height="48.0" fill="#4fb391"/>
+<rect x="71.0" y="174.0" width="10.8" height="0.8" fill="#4fb391"/>
+<rect x="86.4" y="174.0" width="10.8" height="0.8" fill="#4fb391"/>
+<rect x="101.9" y="166.0" width="10.8" height="8.0" fill="#4fb391"/>
+<rect x="117.4" y="66.0" width="10.8" height="108.0" fill="#4fb391"/>
+<rect x="148.3" y="154.0" width="10.8" height="20.0" fill="#4fb391" opacity="0.55"/>
+<rect x="163.8" y="118.0" width="10.8" height="56.0" fill="#4fb391"/>
+<rect x="179.2" y="162.0" width="10.8" height="12.0" fill="#4fb391"/>
+<rect x="194.7" y="150.0" width="10.8" height="24.0" fill="#4fb391"/>
+<rect x="210.1" y="170.0" width="10.8" height="4.0" fill="#4fb391"/>
+<rect x="225.6" y="174.0" width="10.8" height="0.8" fill="#4fb391"/>
+<rect x="241.1" y="90.0" width="10.8" height="84.0" fill="#4fb391"/>
+<rect x="256.5" y="74.0" width="10.8" height="100.0" fill="#4fb391"/>
+<rect x="272.0" y="174.0" width="10.8" height="0.8" fill="#4fb391"/>
+<rect x="287.5" y="166.0" width="10.8" height="8.0" fill="#4fb391"/>
+<rect x="302.9" y="174.0" width="10.8" height="0.8" fill="#4fb391"/>
+<rect x="318.4" y="170.0" width="10.8" height="4.0" fill="#4fb391"/>
+<rect x="333.9" y="78.0" width="10.8" height="96.0" fill="#4fb391"/>
+<rect x="349.3" y="158.0" width="10.8" height="16.0" fill="#4fb391"/>
+<rect x="364.8" y="166.0" width="10.8" height="8.0" fill="#4fb391"/>
+<rect x="380.2" y="174.0" width="10.8" height="0.8" fill="#4fb391"/>
+<rect x="395.7" y="118.0" width="10.8" height="56.0" fill="#4fb391"/>
+<rect x="411.2" y="174.0" width="10.8" height="0.8" fill="#4fb391"/>
+<rect x="426.6" y="170.0" width="10.8" height="4.0" fill="#4fb391"/>
+<rect x="457.6" y="172.0" width="10.8" height="2.0" fill="#4fb391" opacity="0.55"/>
+<rect x="473.0" y="170.0" width="10.8" height="4.0" fill="#4fb391"/>
+<rect x="488.5" y="154.0" width="10.8" height="20.0" fill="#4fb391"/>
+<rect x="504.0" y="58.0" width="10.8" height="116.0" fill="#4fb391"/>
+<rect x="534.9" y="166.0" width="10.8" height="8.0" fill="#4fb391" opacity="0.55"/>
+<rect x="550.3" y="58.0" width="10.8" height="116.0" fill="#4fb391"/>
+<rect x="565.8" y="106.0" width="10.8" height="68.0" fill="#4fb391"/>
+<rect x="581.3" y="86.0" width="10.8" height="88.0" fill="#4fb391"/>
+<rect x="596.7" y="150.0" width="10.8" height="24.0" fill="#4fb391"/>
+<rect x="612.2" y="42.0" width="10.8" height="132.0" fill="#4fb391"/>
+<rect x="627.7" y="86.0" width="10.8" height="88.0" fill="#4fb391"/>
+<rect x="643.1" y="98.0" width="10.8" height="76.0" fill="#4fb391"/>
+<rect x="653.2" y="54.0" width="10.8" height="120.0" fill="#4fb391"/>
+<line x1="30" y1="88.9" x2="664" y2="88.9" stroke="#cdc7b6" stroke-width="1" stroke-dasharray="4 3" opacity="0.6"/>
+<text x="672" y="92.9" fill="#cdc7b6" font-size="12" font-weight="600">7일 평균 21</text>
+<text x="30.0" y="192" fill="#9a937f" font-size="10" text-anchor="start">07.30</text>
+<text x="339.3" y="192" fill="#9a937f" font-size="10" text-anchor="middle">08.19</text>
+<text x="664.0" y="192" fill="#9a937f" font-size="10" text-anchor="end">09.09</text>
+</g>
+</svg>

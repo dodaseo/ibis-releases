@@ -62,7 +62,10 @@ jobs:
           # `git diff` 가 변화를 못 본다(실측: 62행을 만들고도 '변경 없음' 으로 빠졌다).
           # 그래프 SVG 도 함께 — report.py 가 매일 다시 그린다(빠뜨리면 README 가
           # 가리키는 그림만 어제 것으로 남는다).
-          git add stats/downloads.csv stats/README.md stats/report.py stats/downloads-light.svg stats/downloads-dark.svg README.md
+          # ⚠ SVG 는 이름을 하나씩 적지 말고 `stats/*.svg` 로 쓸어 담는다 — 그림이 늘 때마다
+          #   (runs-*.svg 가 그랬다) 여기를 같이 고쳐야 하는데, 잊으면 README 만 새 그림을
+          #   가리키고 파일은 안 올라가 깨진 이미지가 된다. 빠진 그림은 CI 로그에 안 남는다.
+          git add stats/downloads.csv stats/README.md stats/report.py stats/*.svg README.md
           if git diff --cached --quiet; then
             echo "변경 없음 — 커밋하지 않음"; exit 0
           fi

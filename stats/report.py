@@ -12,7 +12,16 @@ GitHub 은 **누적** 수만 주므로 일별 증가는 스냅숏 사이의 차�
 분석 주의 — 이 구분이 숫자의 뜻을 바꾼다:
   · setup.exe  : 새로 설치한 사람에 가깝다(인앱 업데이터는 setup 을 받지 않는다)
   · win64.zip  : 무설치 사용자 + **인앱 업데이트**가 섞인다
-  · .sha256    : 업데이터의 무결성 검증·수동 확인 — 사람 수와 무관
+  · .sha256    : **앱이 켜질 때마다** 한 번 — 아래 참고
+
+🔑 .sha256 이 이 저장소에서 유일한 '살아 있는 설치' 신호다(2026-09-10 확인).
+   앱은 시작할 때 `checkUpdate(true)` → `updater.check_latest()` 를 부르는데, 그 안의
+   `_find_sha256()` 이 **업데이트가 없어도** `<zip>.sha256` 자산을 실제로 내려받는다.
+   그래서 체크섬 증가분 ≈ **앱 실행 횟수**다(사람 수가 아니라 실행 횟수 — 하루에 두세 번
+   켜면 그만큼 는다. 스캐너도 섞이므로 상한으로 읽는다).
+   ⛔ "체크섬은 사람 수와 무관" 이라고 적혀 있던 것을 뒤집은 것이다 — 그 서술을 믿고
+      이 계열을 통계에서 빼면, 클라우드에 로그인하지 않는 사용자를 볼 길이 아예 없어진다
+      (2026-09-10 실측: Supabase 가입자는 개발 계정 1 뿐이라 서버 쪽에 신호가 없다).
 """
 from __future__ import annotations
 
@@ -80,6 +89,24 @@ def _axis(maxv: int, want: int = 5) -> tuple[int, int]:
             step = int(mag * m) or 1
             break
     return (maxv // step + 1) * step, step
+
+
+def daily_runs(days: list[str], per_day) -> list[tuple[str, float, int]]:
+    """[(날짜, 그날 실행 추정, 스냅숏 간격 일수)] — 체크섬 증가분을 하루치로 고른다.
+
+    스냅숏이 하루 빠지면 다음 증가분이 이틀치가 된다(실제로 08-31·09-10 이 비었다).
+    그대로 그리면 그날만 치솟아 사실과 다르게 보이므로 **간격 일수로 나눈다**.
+    """
+    def ordinal(d: str) -> int:
+        y, m, dd = (int(x) for x in d.split("-"))
+        return date(y, m, dd).toordinal()
+    out = []
+    for i in range(1, len(days)):
+        a, b = days[i - 1], days[i]
+        gap = max(ordinal(b) - ordinal(a), 1)
+        delta = per_day[b].get("checksum", 0) - per_day[a].get("checksum", 0)
+        out.append((b, max(delta, 0) / gap, gap))
+    return out
 
 
 def _x_positions(days: list[str]) -> list[float]:
@@ -151,15 +178,67 @@ def svg_chart(days: list[str], per_day, theme: str) -> str:
     return "\n".join(o)
 
 
+def svg_runs(runs: list[tuple[str, float, int]], theme: str) -> str:
+    """일별 실행 추정 — 막대. 누적 그래프(선)와 형태를 달리해 다른 값임을 알린다."""
+    c = THEMES[theme]
+    vals = [v for _, v, _ in runs]
+    top, step = _axis(int(max([*vals, 1]) + 0.999))
+    h = SVG_H - PAD_T - PAD_B
+    xs = _x_positions([d for d, _, _ in runs])
+    # 막대 폭 — 이웃 간격의 70%, 너무 얇지도 굵지도 않게
+    gapx = min((xs[i + 1] - xs[i] for i in range(len(xs) - 1)), default=12)
+    bw = max(2.0, min(14.0, gapx * 0.7))
+    avg = sum(vals[-7:]) / max(len(vals[-7:]), 1)
+
+    def y(v: float) -> float:
+        return PAD_T + h * (1 - v / top)
+
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{SVG_W}" height="{SVG_H}" '
+         f'viewBox="0 0 {SVG_W} {SVG_H}" role="img" '
+         f'aria-label="일별 앱 실행 추정 — 최근 7일 평균 하루 {avg:.0f}회">',
+         f'<g font-family="{FONT}" font-size="11">']
+    for v in range(0, top + 1, step):
+        yy = y(v)
+        o.append(f'<line x1="{PAD_L}" y1="{yy:.1f}" x2="{SVG_W - PAD_R}" y2="{yy:.1f}" '
+                 f'stroke="{c["grid"]}" stroke-width="1"/>')
+        o.append(f'<text x="{PAD_L - 8}" y="{yy + 3.5:.1f}" fill="{c["text"]}" '
+                 f'font-size="10" text-anchor="end">{v}</text>')
+    base = y(0)
+    for (d, v, gap), x in zip(runs, xs):
+        yy = y(v)
+        # 스냅숏이 빠져 나눠 그린 막대는 옅게 — 관측이 아니라 배분한 값이다
+        op = ' opacity="0.55"' if gap > 1 else ""
+        # 첫·마지막 막대는 축 밖으로 반쪽이 나간다 — 그림 안으로 물린다
+        left = min(max(x - bw / 2, PAD_L), SVG_W - PAD_R - bw)
+        o.append(f'<rect x="{left:.1f}" y="{yy:.1f}" width="{bw:.1f}" '
+                 f'height="{max(base - yy, 0.8):.1f}" fill="{c["setup"]}"{op}/>')
+    o.append(f'<line x1="{PAD_L}" y1="{y(avg):.1f}" x2="{SVG_W - PAD_R}" y2="{y(avg):.1f}" '
+             f'stroke="{c["ink"]}" stroke-width="1" stroke-dasharray="4 3" opacity="0.6"/>')
+    o.append(f'<text x="{SVG_W - PAD_R + 8}" y="{y(avg) + 4:.1f}" fill="{c["ink"]}" '
+             f'font-size="12" font-weight="600">7일 평균 {avg:.0f}</text>')
+    picks = sorted({0, len(runs) // 2, len(runs) - 1})
+    for i in picks:
+        anchor = "start" if i == 0 else ("end" if i == len(runs) - 1 else "middle")
+        o.append(f'<text x="{xs[i]:.1f}" y="{SVG_H - 8}" fill="{c["text"]}" '
+                 f'font-size="10" text-anchor="{anchor}">{runs[i][0][5:].replace("-", ".")}</text>')
+    o += ["</g>", "</svg>", ""]
+    return "\n".join(o)
+
+
 def write_svgs(days: list[str], per_day) -> list[str]:
     """라이트·다크 두 벌을 쓴다. README 는 <picture> 로 갈라 쓴다."""
     if len(days) < 2:
         return []
     out = []
+    runs = daily_runs(days, per_day)
     for theme in ("light", "dark"):
         p = CSV.parent / f"downloads-{theme}.svg"
         p.write_text(svg_chart(days, per_day, theme), encoding="utf-8")
         out.append(p.name)
+        if runs:
+            q = CSV.parent / f"runs-{theme}.svg"
+            q.write_text(svg_runs(runs, theme), encoding="utf-8")
+            out.append(q.name)
     return out
 
 
@@ -177,6 +256,33 @@ def chart_block(days: list[str], per_day, base: str = "stats/downloads") -> list
         "</picture>",
         "",
         "> 설치 프로그램은 **새로 설치한 사람**에 가깝고, zip 은 **인앱 업데이트**가 섞입니다.",
+        "",
+    ]
+
+
+def runs_block(runs: list[tuple[str, float, int]], base: str = "runs") -> list[str]:
+    """일별 실행 추정 절 — 그래프 + 요약 + 이 수치를 어떻게 읽어야 하는지."""
+    if not runs:
+        return ["> 스냅숏이 하나뿐이라 아직 실행 추정을 낼 수 없습니다.", ""]
+    vals = [v for _, v, _ in runs]
+    r7 = vals[-7:]
+    avg7 = sum(r7) / len(r7)
+    avg_all = sum(vals) / len(vals)
+    return [
+        "<picture>",
+        f'  <source media="(prefers-color-scheme: dark)" srcset="{base}-dark.svg">',
+        f'  <img alt="일별 앱 실행 추정" src="{base}-light.svg" width="760">',
+        "</picture>",
+        "",
+        f"- 최근 7일 평균 **하루 {avg7:.0f}회** · 전체 기간 평균 하루 {avg_all:.0f}회"
+        f" · 마지막 관측 **{runs[-1][1]:.0f}회**({runs[-1][0]})",
+        "- **실행 횟수이지 사람 수가 아니다.** 한 사람이 하루 세 번 켜면 3으로 잡힌다.",
+        "- 앱은 켜질 때 업데이트를 확인하고, 그 과정에서 `.sha256` 을 실제로 내려받는다"
+        " — 업데이트가 없어도 받는다. 그래서 이 계열이 곧 실행 횟수다.",
+        "- 스캐너·크롤러도 자산을 훑으므로 **상한으로** 읽는다. 옅은 막대는 스냅숏이 빠진"
+        " 구간을 날수로 나눈 값이라 관측이 아니라 배분값이다.",
+        "- 사람 수를 알 길은 아직 없다. 앱은 아무것도 보내지 않고(공개 README 의 약속),"
+        " 클라우드는 로그인한 사람만 보이는데 그 수가 아직 개발 계정뿐이다.",
         "",
     ]
 
@@ -247,7 +353,7 @@ def main() -> int:
     out += ["## 누적", "", "| 구분 | 누적 | 전일 대비 |", "|---|---:|---:|"]
     labels = [("setup", "설치 프로그램 (새 설치에 가깝다)"),
               ("zip", "무설치 zip (+ 인앱 업데이트)"),
-              ("checksum", "체크섬 파일 (사람 수 아님)")]
+              ("checksum", "체크섬 (앱이 켜질 때마다 1 — 아래 '사용 현황')")]
     for k, label in labels:
         cur = per_day[last].get(k, 0)
         if prev is None:
@@ -258,6 +364,9 @@ def main() -> int:
         out.append(f"| {label} | {cur} | {delta} |")
     tot = sum(per_day[last].get(k, 0) for k, _ in labels)
     out += [f"| **합계** | **{tot}** | |", ""]
+
+    out += ["## 사용 현황 — 일별 실행 추정", ""]
+    out += runs_block(daily_runs(days, per_day))
 
     if len(days) > 1:
         out += ["## 일별 증가", "", "| 날짜 | 설치 | zip | 합계 |", "|---|---:|---:|---:|"]
