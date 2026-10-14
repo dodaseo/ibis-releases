@@ -236,7 +236,7 @@
 <!-- DL-STATS:START -->
 <!-- 이 블록은 .github/workflows/dl-stats.yml 이 매일 생성합니다. 직접 고치지 마세요. -->
 
-최신 기록 **2026-10-13** · 누적 합계 **825건** (설치 57 · zip 132)
+최신 기록 **2026-10-14** · 누적 합계 **826건** (설치 57 · zip 132)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="stats/downloads-dark.svg">
