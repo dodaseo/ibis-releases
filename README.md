@@ -292,7 +292,7 @@ AI 리서치 노트는 긴 단행본도 추출된 본문 전체를 나누어 분
 <!-- DL-STATS:START -->
 <!-- 이 블록은 .github/workflows/dl-stats.yml 이 매일 생성합니다. 직접 고치지 마세요. -->
 
-최신 기록 **2026-11-06** · 누적 합계 **1126건** (설치 76 · zip 171)
+최신 기록 **2026-11-07** · 누적 합계 **1141건** (설치 78 · zip 174)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="stats/downloads-dark.svg">
