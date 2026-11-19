@@ -123,7 +123,7 @@ Windows 10·11용이며 개인·학술·연구·교육 목적으로 무료입니
 <!-- DL-STATS:START -->
 <!-- 이 블록은 .github/workflows/dl-stats.yml 이 매일 생성합니다. 직접 고치지 마세요. -->
 
-최신 기록 **2026-11-18** · 누적 합계 **1375건** (설치 98 · zip 217)
+최신 기록 **2026-11-19** · 누적 합계 **1405건** (설치 101 · zip 221)
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="stats/downloads-dark.svg">
