@@ -19,7 +19,7 @@
 
 - 지난 버전은 내려받을 수 없습니다. 릴리스 페이지에는 최신 판만 보입니다.
 - 이미 설치해 쓰고 계신 판은 그대로 돌아갑니다. 판올림도 앱 안에서 하던 대로 됩니다.
-- 새 판에 문제가 있어 되돌려야 한다면 [이슈](https://github.com/dodaseo/ibis-releases/issues)로 알려 주세요 — 지난 판을 다시 열어 드립니다.
+- 새 판에 문제가 있어 되돌려야 한다면 `도움말 › 문제 보고…`나 [이슈](https://github.com/dodaseo/ibis-releases/issues)로 알려 주세요 — 지난 판을 다시 열어 드립니다.
 
 ## 설치할 때 'Windows의 PC 보호'(SmartScreen) 경고가 떠요.
 
