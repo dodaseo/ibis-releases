@@ -36,7 +36,7 @@
 
 ## [8. AI 기능](usage/08-ai.md)
 
-[AI 문헌 요약](usage/08-ai.md#81-ai-문헌-요약) · [서지정보 AI 채우기](usage/08-ai.md#82-서지정보-ai-채우기) · [AI 태그 정리](usage/08-ai.md#83-ai-태그-정리) · [AI 제공자·모델·폴백](usage/08-ai.md#84-ai-제공자모델폴백)
+[AI 문헌 요약](usage/08-ai.md#81-ai-문헌-요약) · [서지정보 AI 채우기](usage/08-ai.md#82-서지정보-ai-채우기) · [AI 태그 정리](usage/08-ai.md#83-ai-태그-정리) · [AI 제공자·모델·폴백](usage/08-ai.md#84-ai-제공자모델폴백) · [AI 에이전트 연결 (MCP)](usage/08-ai.md#85-ai-에이전트-연결-mcp)
 
 ## [9. 설정·API 키](usage/09-settings.md)
 
